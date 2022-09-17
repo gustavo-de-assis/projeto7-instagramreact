@@ -68,7 +68,7 @@ export default function Posts() {
         imagemConteudo: "assets/img/gato-telefone.svg", descricaoImagem:"gato-telefone.svg",
          nomeCurtidoPor: "respondeai",imagemCurtidoPor:"assets/img/respondeai.svg"},
 
-    ]
+    ];
  
  return (
      <div class="posts">
