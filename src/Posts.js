@@ -15,11 +15,20 @@ function Topo(props) {
 }
 
 function Conteudo(props) {
-    return (
-        <div class="conteudo">
-            <img src={props.imagemConteudo} alt={props.descricaoImagem} onDoubleClick={props.funcaoCurtir} />
-        </div>
-    )
+    if(props.tipoMedia === 'imagem'){
+        return (
+            <div class="conteudo">
+                <img src={props.conteudoMedia} alt={props.descricaoConteudo} onDoubleClick={props.funcaoCurtir} />
+            </div>
+        )
+    } else{
+        return (
+            <div class="conteudo">
+                <video controls > <source src={props.conteudoMedia+'#t=0.1'} type={props.descricaoConteudo
+                }></source></video>
+            </div>
+        )
+    }
 }
 
 function Fundo(props) {
@@ -79,7 +88,7 @@ function Post(props) {
         <div class="post">
             <Topo nomeUsuario={props.nomeUsuario} imagemUsuario={props.imagemUsuario} />
 
-            <Conteudo imagemConteudo={props.imagemConteudo} descricaoImagem={props.descricaoImagem} 
+            <Conteudo tipoMedia={props.tipoMedia} conteudoMedia={props.conteudoMedia} descricaoConteudo={props.descricaoConteudo} 
             funcaoCurtir={estadoLike}/>
 
             <Fundo nomeCurtidoPor={props.nomeCurtidoPor} imagemCurtidoPor={props.imagemCurtidoPor}
@@ -93,21 +102,25 @@ export default function Posts() {
     const conteudoPosts = [
         {
             nomeUsuario: "meowed", imagemUsuario: "assets/img/meowed.svg",
-            imagemConteudo: "assets/img/gato-telefone.svg", descricaoImagem: "gato-telefone.svg",
-            nomeCurtidoPor: "respondeai", imagemCurtidoPor: "assets/img/respondeai.svg", numCurtidas: 101526
+            tipoMedia: 'imagem', conteudoMedia: "assets/img/gato-telefone.svg", descricaoConteudo: "gato-telefone.svg",
+            nomeCurtidoPor: "respondeai", imagemCurtidoPor: "assets/img/respondeai.svg", numCurtidas: 101523
+        },
+        {
+            nomeUsuario: "Ronaldinho", imagemUsuario: "assets/img/ronaldinho.png",
+            tipoMedia: 'imagem', conteudoMedia: "assets/img/role-aleatorio.jpg", descricaoConteudo: "Role Aleatório",
+            nomeCurtidoPor: "memeriagourmet", imagemCurtidoPor: "assets/img/memeriagourmet.svg", numCurtidas: 703940
         },
 
         {
             nomeUsuario: "barked", imagemUsuario: "assets/img/barked.svg",
-            imagemConteudo: "assets/img/dog.svg", descricaoImagem: "dog.svg",
-            nomeCurtidoPor: "adorable_animals", imagemCurtidoPor: "assets/img/adorable_animals.svg", numCurtidas: 101526
+            tipoMedia: 'imagem', conteudoMedia: "assets/img/dog.svg", descricaoConteudo: "dog.svg",
+            nomeCurtidoPor: "adorable_animals", imagemCurtidoPor: "assets/img/adorable_animals.svg", numCurtidas: 200541
         },
-
         {
-            nomeUsuario: "meowed", imagemUsuario: "assets/img/meowed.svg",
-            imagemConteudo: "assets/img/gato-telefone.svg", descricaoImagem: "gato-telefone.svg",
-            nomeCurtidoPor: "respondeai", imagemCurtidoPor: "assets/img/respondeai.svg", numCurtidas: 101526
-        },
+            nomeUsuario: "nathanwpyl", imagemUsuario: "assets/img/nathanwpylestrangeplanet.svg",
+            tipoMedia: 'video', conteudoMedia: "assets/video/video.mp4", descricaoConteudo: "video/mp4",
+            nomeCurtidoPor: "filomoderna", imagemCurtidoPor: "assets/img/filomoderna.svg", numCurtidas: 335483
+        }
 
     ];
 
@@ -115,7 +128,7 @@ export default function Posts() {
         <div class="posts">
 
             {conteudoPosts.map((p, i) => (<Post nomeUsuario={p.nomeUsuario} imagemUsuario={p.imagemUsuario}
-                imagemConteudo={p.imagemConteudo} descricaoImagem={p.descricaoImagem}
+                tipoMedia={p.tipoMedia} conteudoMedia={p.conteudoMedia} descricaoConteudo={p.descricaoConteudo}
                 nomeCurtidoPor={p.nomeCurtidoPor} imagemCurtidoPor={p.imagemCurtidoPor} numCurtidas={p.numCurtidas} key={i} />))}
 
 

@@ -183,7 +183,9 @@ body {
 .post .conteudo img {
   width: 100%;
 }
-
+.post .conteudo video {
+  width: 100%;
+}
 .post .fundo .acoes {
   display: flex;
   justify-content: space-between;
