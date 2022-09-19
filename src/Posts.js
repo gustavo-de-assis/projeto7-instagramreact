@@ -49,7 +49,7 @@ function Fundo(props) {
             <div class="curtidas">
                 <img src={props.imagemCurtidoPor} alt={props.nomeCurtidoPor} />
                 <div class="texto">
-                    <p>Curtido por <strong>{props.nomeCurtidoPor}</strong> e <strong>outras {props.curtidas}{/*101.523*/} pessoas</strong></p>
+                    <p>Curtido por <strong>{props.nomeCurtidoPor}</strong> e <strong>outras {props.curtidas.toLocaleString()}{/*101.523*/} pessoas</strong></p>
                 </div>
             </div>
         </div>
